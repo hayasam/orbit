@@ -3,6 +3,7 @@ import numpy as np
 
 from orbit.models import LGT, DLT, KTR, KTRLite
 
+seed_out=6666
 
 @pytest.mark.parametrize("estimator", ["stan-mcmc", "stan-map"])
 def test_wbic_dlt(make_weekly_data, estimator):
@@ -15,7 +16,7 @@ def test_wbic_dlt(make_weekly_data, estimator):
         seasonality=52,
         num_warmup=100,
         num_sample=100,
-        seed=6666,
+        seed=seed_out,
         estimator=estimator,
     )
 
@@ -38,7 +39,7 @@ def test_wbic_lgt(make_weekly_data):
         seasonality=52,
         num_warmup=100,
         num_sample=100,
-        seed=6666,
+        seed=seed_out,
         estimator="stan-mcmc",
     )
     wbic_val1 = lgt1.fit_wbic(df=train_df)
@@ -50,7 +51,7 @@ def test_wbic_lgt(make_weekly_data):
         seasonality=52,
         num_steps=100,
         num_sample=100,
-        seed=6666,
+        seed=seed_out,
         estimator="pyro-svi",
     )
     wbic_val2 = lgt2.fit_wbic(df=train_df)
@@ -62,7 +63,7 @@ def test_wbic_lgt(make_weekly_data):
         date_col="week",
         regressor_col=list("abcdef"),
         seasonality=52,
-        seed=6666,
+        seed=seed_out,
         estimator="stan-map",
     )
     lgt3.fit(df=train_df)
@@ -79,7 +80,7 @@ def test_wbic_ktr(make_weekly_data):
         seasonality=52,
         num_steps=100,
         num_sample=100,
-        seed=6666,
+        seed=seed_out,
         estimator="pyro-svi",
     )
 
@@ -94,7 +95,7 @@ def test_wbic_ktrlite(make_weekly_data):
         response_col="response",
         date_col="week",
         seasonality=52,
-        seed=6666,
+        seed=seed_out,
         estimator="stan-map",
     )
 
