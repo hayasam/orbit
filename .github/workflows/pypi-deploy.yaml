@@ -6,8 +6,9 @@
 name: Deploy package to PyPI
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+#   release:
+#     types: [published]
 
 jobs:
   deploy:
