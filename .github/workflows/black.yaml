@@ -1,16 +1,16 @@
-name: Lint
+# name: Lint
 
-on: [push, pull_request]
+# on: [push, pull_request]
 
-jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-#      Currently only checking instead of auto formatting
-      - uses: jpetrucciani/black-check@master
-#      - uses: psf/black@stable
-      - name: Install Dependencies
-        run: pip install -r requirements-test.txt
-      - name: black check diff
-        run: black --diff .
+# jobs:
+#   lint:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+# #      Currently only checking instead of auto formatting
+#       - uses: jpetrucciani/black-check@master
+# #      - uses: psf/black@stable
+#       - name: Install Dependencies
+#         run: pip install -r requirements-test.txt
+#       - name: black check diff
+#         run: black --diff .
